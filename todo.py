@@ -30,19 +30,18 @@ def remove_task():
             break
 
 def view_tasks():
+    print("Your remaining task:")
     for task in task_list:
-        print(task)
-
-
+        print(f"- {task}")
 
 
 features_list = ["1.-Add Task", "2.-Remove Task", "3.-View Task", "4.-Exit"]
-print("To-Do list App")
 while True:
+    print("To-Do list App")
     for feature in features_list:
         print(feature)
     number = input("Enter your number:")
-    if not number in ["1","2","3","4"]:
+    if not number in ["1", "2", "3", "4"]:
         print("Invalid input.")
         continue
     else:
@@ -56,5 +55,5 @@ while True:
             view_tasks()
 
         elif number == "4":
-            print("Exiting the application. Good bye!")
+            print("Exiting the application. Good bye!")            
             break

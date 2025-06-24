@@ -2,9 +2,11 @@ task_list = []
 
 def add_task():
     task_name = input("Add a task:")
-    task_list.append(task_name)
+    task_priority = int(input("Enter the priority of the task as a number (3 = High, 2 = Medium, 1 = Low):"))
+    task_due = input("Enter the due date of the task (YYYY-MM-DD):")
+    new_task = (task_name, task_priority, task_due)
+    task_list.append(new_task)
     print(f"your remaining task:{task_list}")
-
 
 def remove_task():
     while True:
@@ -34,14 +36,19 @@ def view_tasks():
     for task in task_list:
         print(f"- {task}")
 
+def suggest_task():
+    print("Here are suggested tasks you might want to work on:")
+    task_sorted = sorted(task_list, key = lambda priority: priority[1], reverse = True)
+    for task in task_sorted:
+        print(f"- {task}")
 
-features_list = ["1.-Add Task", "2.-Remove Task", "3.-View Task", "4.-Exit"]
+features_list = ["1.-Add Task", "2.-Remove Task", "3.-View Task", "4.-Suggested Tasks" , "5.-Exit"]
 while True:
     print("To-Do list App")
     for feature in features_list:
         print(feature)
     number = input("Enter your number:")
-    if not number in ["1", "2", "3", "4"]:
+    if not number in ["1", "2", "3", "4", "5"]:
         print("Invalid input.")
         continue
     else:
@@ -55,5 +62,8 @@ while True:
             view_tasks()
 
         elif number == "4":
-            print("Exiting the application. Good bye!")            
+            suggest_task()
+
+        elif number == "5":
+            print("Exiting the application. Good bye!")
             break

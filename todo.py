@@ -1,6 +1,5 @@
 task_list = []
 
-
 def add_task():
     task_name = input("Add a task:")
     task_list.append(task_name)
@@ -44,4 +43,5 @@ while True:
             view_tasks()
 
         elif number == "4":
-            print("Exiting the application. Good bye!")
+            print("Exiting the application. Good bye!")            
+            break

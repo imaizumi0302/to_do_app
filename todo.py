@@ -7,19 +7,29 @@ def add_task():
 
 
 def remove_task():
-    task_name = input("type a task you remove:")
-    task_list.remove(task_name)
-    print(f"your remaining task:{task_list}")
+    while True:
+        for i, task in enumerate(task_list):
+            print(f"{i}, {task}")
+        task_number = int(input("Enter the task to remove:"))
 
-# def view_tasks():
+        removed = task_list.pop(task_number)
+        print(f"You removed {removed}")
+        print(f"your remaining task:{task_list}")
+
+
+def view_tasks():
+    print("Your remaining task:")
+    for task in task_list:
+        print(f"- {task}")
+
 
 features_list = ["1.-Add Task", "2.-Remove Task", "3.-View Task", "4.-Exit"]
-print("To-Do list App")
 while True:
+    print("To-Do list App")
     for feature in features_list:
         print(feature)
     number = input("Enter your number:")
-    if not number in ["1","2","3","4"]:
+    if not number in ["1", "2", "3", "4"]:
         print("Invalid input.")
         continue
     else:
@@ -30,8 +40,8 @@ while True:
             remove_task()
 
         elif number == "3":
-            view_task()
+            view_tasks()
 
         elif number == "4":
-            print("Exiting the application. Good bye!")
+            print("Exiting the application. Good bye!")            
             break

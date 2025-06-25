@@ -65,5 +65,6 @@ while True:
             suggest_task()
 
         elif number == "5":
-            print("Exiting the application. Good bye!")            
+            print("Exiting the application. Good bye!")
             break
+

@@ -1,5 +1,6 @@
 from datetime import datetime
-task_list = [('buy', 1, '2025-07-01'), ('sell', 2, '2025-06-30'), ('push', 3, '2025-06-29'), ('say', 1, '2025-06-27'), ('ask', 2, '2025-06-26')]
+#task_list = [('buy', 1, '2025-07-01'), ('sell', 2, '2025-06-30'), ('push', 3, '2025-06-29'), ('say', 1, '2025-06-27'), ('ask', 2, '2025-06-26')]
+task_list = []
 
 def add_task():
     task_name = input("Add a task: ")

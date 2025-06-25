@@ -34,8 +34,9 @@ def remove_task():
             break
 
 def view_tasks():
-    print("Your remaining task:")
-    for task in task_list:
+    print("Your remaining tasks sorted by priority and due date:")
+    task_sorted = sorted(task_list, key=lambda task: (-task[1], task[2]))  # sort by priority desc, date asc
+    for task in task_sorted:
         print(f"- {task}")
 
 def suggest_task():

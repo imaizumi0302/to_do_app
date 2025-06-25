@@ -1,8 +1,10 @@
+from datetime import datetime
 task_list = []
 
 def add_task():
     task_name = input("Add a task:")
-    task_priority = int(input("Enter the priority of the task as a number (3 = High, 2 = Medium, 1 = Low):"))
+
+    task_priority = int(input("Enter the priority of the task as a number (1 = High, 2 = Medium, 3 = Low):"))
     task_due = input("Enter the due date of the task (YYYY-MM-DD):")
     new_task = (task_name, task_priority, task_due)
     task_list.append(new_task)
@@ -41,6 +43,17 @@ def suggest_task():
     task_sorted = sorted(task_list, key = lambda priority: priority[1], reverse = True)
     for task in task_sorted:
         print(f"- {task}")
+
+def suggest_task():
+    print("Here are suggested tasks you might want to work on:")
+    task_sorted = sorted(task_list, key = lambda priority: (priority[1],priority[2]))
+
+    today = datetime.today().date()
+    for task in task_sorted:
+            deadline = datetime.strptime(task[2],"%Y-%m-%d").date()
+            diff = deadline - today
+            if diff.days <= 5:
+                print(f"- {task}")
 
 features_list = ["1.-Add Task", "2.-Remove Task", "3.-View Task", "4.-Suggested Tasks" , "5.-Exit"]
 while True:

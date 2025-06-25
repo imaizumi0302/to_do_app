@@ -2,13 +2,21 @@ from datetime import datetime
 task_list = []
 
 def add_task():
-    task_name = input("Add a task:")
+    task_name = input("Add a task: ")
+    task_priority = int(input("Enter the priority of the task as a number (1 = High, 2 = Medium, 3 = Low): "))
 
-    task_priority = int(input("Enter the priority of the task as a number (1 = High, 2 = Medium, 3 = Low):"))
-    task_due = input("Enter the due date of the task (YYYY-MM-DD):")
+    # Validate date format
+    while True:
+        task_due = input("Enter the due date of the task (YYYY-MM-DD): ")
+        try:
+            datetime.strptime(task_due, "%Y-%m-%d")
+            break
+        except ValueError:
+            print("Invalid date format. Please enter the date in YYYY-MM-DD format.")
+
     new_task = (task_name, task_priority, task_due)
     task_list.append(new_task)
-    print(f"your remaining task:{task_list}")
+    print(f"Your remaining tasks: {task_list}")
 
 def remove_task():
     while True:
@@ -33,17 +41,13 @@ def remove_task():
             print("Returning to the menu")
             break
 
+
 def view_tasks():
     print("Your remaining tasks sorted by priority and due date:")
     task_sorted = sorted(task_list, key=lambda task: (-task[1], task[2]))  # sort by priority desc, date asc
     for task in task_sorted:
         print(f"- {task}")
 
-def suggest_task():
-    print("Here are suggested tasks you might want to work on:")
-    task_sorted = sorted(task_list, key = lambda priority: priority[1], reverse = True)
-    for task in task_sorted:
-        print(f"- {task}")
 
 def suggest_task():
     print("Here are suggested tasks you might want to work on:")

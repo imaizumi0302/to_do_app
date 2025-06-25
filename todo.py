@@ -1,4 +1,5 @@
 from datetime import datetime
+#task_list = [('buy', 1, '2025-07-01'), ('sell', 2, '2025-06-30'), ('push', 3, '2025-06-29'), ('say', 1, '2025-06-27'), ('ask', 2, '2025-06-26')]
 task_list = []
 
 def add_task():
@@ -44,7 +45,7 @@ def remove_task():
 
 def view_tasks():
     print("Your remaining tasks sorted by priority and due date:")
-    task_sorted = sorted(task_list, key=lambda task: (-task[1], task[2]))  # sort by priority desc, date asc
+    task_sorted = sorted(task_list, key=lambda task: (task[1], task[2]))  # sort by priority desc, date asc
     for task in task_sorted:
         print(f"- {task}")
 
@@ -57,7 +58,7 @@ def suggest_task():
     for task in task_sorted:
             deadline = datetime.strptime(task[2],"%Y-%m-%d").date()
             diff = deadline - today
-            if diff.days <= 5:
+            if diff.days <= 5 or task[1] == 1:
                 print(f"- {task}")
 
 features_list = ["1.-Add Task", "2.-Remove Task", "3.-View Task", "4.-Suggested Tasks" , "5.-Exit"]
